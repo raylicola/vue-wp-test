@@ -37,12 +37,12 @@ services:
       context: ./.docker/front
       dockerfile: Dockerfile
     volumes:
-      - ./front/:/usr/src/app
+      - ./front:/usr/src/app
     stdin_open: true
-    command: yarn serve
+    command: yarn vite serve
     tty: true
     ports:
-      - "3030:8080"
+      - "5173:5173"
     networks:
       - vue_wp
 
