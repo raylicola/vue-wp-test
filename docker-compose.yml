@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:8.0
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    networks:
+      - vue_wp
+
+  wordpress:
+    build:
+      context: ./.docker/wp
+      dockerfile: Dockerfile
+    container_name: wordpress
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+    volumes:
+      - ./wordpress:/var/www/html
+    networks:
+      - vue_wp
+
+  front:
+    build:
+      context: ./.docker/front
+      dockerfile: Dockerfile
+    container_name: front
+    volumes:
+      - ./front/:/usr/src/app
+    stdin_open: true
+    command: yarn serve
+    tty: true
+    ports:
+      - "3030:3000"
+    networks:
+      - vue_wp
+
+volumes:
+  db_data:
+
+networks:
+  vue_wp:
+    driver: bridge

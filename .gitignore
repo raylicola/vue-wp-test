@@ -1,0 +1,65 @@
+# Vue
+.DS_Store
+node_modules/
+/dist/
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+
+# Wordpress
+wordpress/wp-admin/
+wordpress/wp-content/index.php
+wordpress/wp-content/languages
+wordpress/wp-content/plugins/index.php
+wordpress/wp-content/themes/index.php
+wordpress/wp-includes/
+wordpress/index.php
+wordpress/license.txt
+wordpress/readme.html
+wordpress/wp-*.php
+wordpress/xmlrpc.php
+
+# Configuration
+wordpress/wp-config.php
+
+# Example themes
+wordpress/wp-content/themes/twenty*/
+
+# Example plugin
+wordpress/wp-content/plugins/hello.php
+
+# Uploads
+wordpress/wp-content/uploads/
+
+# Log files
+*.log
+
+# htaccess
+wordpress/.htaccess
+
+# All plugins
+#
+# Note: If you wish to whitelist plugins,
+# uncomment the next line
+#/wp-content/plugins
+
+# All themes
+#
+# Note: If you wish to whitelist themes,
+# uncomment the next line
+#/wp-content/themes
