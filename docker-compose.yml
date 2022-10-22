@@ -6,7 +6,6 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     restart: always
-    container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: wordpress
       MYSQL_DATABASE: wordpress
@@ -19,7 +18,6 @@ services:
     build:
       context: ./.docker/wp
       dockerfile: Dockerfile
-    container_name: wordpress
     depends_on:
       - db
     ports:
@@ -38,14 +36,13 @@ services:
     build:
       context: ./.docker/front
       dockerfile: Dockerfile
-    container_name: front
     volumes:
       - ./front/:/usr/src/app
     stdin_open: true
     command: yarn serve
     tty: true
     ports:
-      - "3030:3000"
+      - "3030:8080"
     networks:
       - vue_wp
 
