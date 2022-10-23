@@ -39,7 +39,7 @@ services:
     volumes:
       - ./front:/usr/src/app
     stdin_open: true
-    command: yarn vite serve
+    command: yarn dev
     tty: true
     ports:
       - "5173:5173"
