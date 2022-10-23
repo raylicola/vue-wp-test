@@ -1,13 +1,16 @@
 <template>
   <NewsItem :title="post.title.rendered" v-for="post in posts"></NewsItem>
   <Carousel :paths="caroucel_paths"></Carousel>
+  <div class="q-pa-md" style="max-width: 400px">
+    <Form></Form>
+  </div>
   <!-- <Video path="@/assets/video/test.MOV"></Video> -->
 </template>
 
 <script>
 import axios from 'axios'
 import { onMounted, ref } from 'vue';
-import { Video, Carousel, Card, NewsItem } from '@/components'
+import { Video, Carousel, Card, NewsItem, Form } from '@/components'
 
 export default {
   name: 'Home',
@@ -15,7 +18,8 @@ export default {
     Video,
     Carousel,
     Card,
-    NewsItem
+    NewsItem,
+    Form
 },
   setup() {
     const posts = ref('')
@@ -29,7 +33,7 @@ export default {
     ]
 
     const getPosts = async () => {
-      const {data} = await axios.get('/')
+      const {data} = await axios.get('wp-json/wp/v2/posts')
       posts.value = data
     }
 

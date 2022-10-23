@@ -7,7 +7,7 @@ import 'quasar/src/css/index.sass'
 import App from './App.vue'
 import router from "./routers"
 
-axios.defaults.baseURL = 'http://localhost:8080/wp-json/wp/v2/posts/'
+axios.defaults.baseURL = 'http://localhost:8080/'
 axios.defaults.withCredentials = true
 
 const myApp = createApp(App)
